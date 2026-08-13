@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "[Windows][Debug][WxWidgetsTemplateApp_windows][Debug]",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\Build_Win64\\Debug\\WxWidgetsTemplateApp_windows.exe",
+            "cwd": "${workspaceRoot}/WxWidgetsTemplateApp",
+            "symbolSearchPath": "${workspaceRoot}",
+            "args": [],
+            "externalConsole": false,
+            "logging": {
+                "moduleLoad": false,
+                "trace": true,
+            }
+        },
+        {
+            "name": "[Linux][Debug][WxWidgetsTemplateApp_linux][Debug]",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Build_Linux/WxWidgetsTemplateApp_console.bin",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}/WxWidgetsTemplateApp",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true,
+                }
+            ],
+            "miDebuggerPath": "/usr/bin/gdb",
+            "symbolLoadInfo": {
+                "loadAll": false,
+                "exceptionList": "WxWidgetsTemplateApp_console.bin"
+            }
+        }
+    ]
+}

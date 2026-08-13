@@ -1,0 +1,71 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "${workspaceFolder}/WxWidgetsTemplateApp/inc",
+                "${workspaceFolder}/WxWidgetsTemplateApp/src",
+                "${workspaceFolder}/deps/wxWidgets/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "${default}"
+        },
+        {
+            "name": "Linux",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/usr/include",
+                "/usr/include/c++/14/bits",
+                "${workspaceFolder}/WxWidgetsTemplateApp/inc",
+                "${workspaceFolder}/WxWidgetsTemplateApp/src",
+                "${workspaceFolder}/deps/wxWidgets/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "${default}"
+        },
+        {
+            "name": "Linux_Static",
+            "includePath": [
+                "/usr/include",
+                "/usr/include/c++/14/bits",
+                "${workspaceFolder}/WxWidgetsTemplateApp/inc",
+                "${workspaceFolder}/WxWidgetsTemplateApp/src",
+                "${workspaceFolder}/deps/wxWidgets/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "_UNICODE",
+                "CUL_STATIC",
+                "UNICODE"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++20",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

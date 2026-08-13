@@ -1,0 +1,158 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "configuration",
+            "type": "pickString",
+            "description": "Select configuration",
+            "options": [
+                "Debug",
+                "Release",
+                "RelWithDebInfo"
+            ],
+            "default": "Debug"
+        },
+        {
+            "id": "platform",
+            "type": "pickString",
+            "description": "Select platform",
+            "options": [
+                "Win64",
+                "Linux"
+            ]
+        }
+    ],
+    "tasks": [
+        {
+            "label": "Run wxWidgets Client + Server",
+            "dependsOrder": "parallel",
+            "dependsOn": [
+                "Run wxWidgets Client",
+                "Run wxWidgets Server"
+            ]
+        },
+        {
+            "label": "Run wxWidgets Client",
+            "type": "shell",
+            "command": "${workspaceFolder}/Build_Win64/deps/wxWidgets/lib/vc_x64_dll/client.exe"
+        },
+        {
+            "label": "Run wxWidgets Server",
+            "type": "shell",
+            "command": "${workspaceFolder}/Build_Win64/deps/wxWidgets/lib/vc_x64_dll/server.exe"
+        },
+        {
+            "label": "[CMake][Build][WxWidgetsTemplateApp_windows]",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "Build_Win64",
+                "--config",
+                "${input:configuration}",
+                "--target",
+                "WxWidgetsTemplateApp_windows",
+            ],
+            "group": {
+                "kind": "build",
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "focus": true,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "[CMake][Create]",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-S",
+                ".",
+                "-B Build_${input:platform}",
+                "-DCMAKE_BUILD_TYPE=${input:configuration}",
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+            ],
+            "group": {
+                "kind": "build",
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "focus": true,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "[CMake][Build]",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "Build_${input:platform}",
+                "--config",
+                "${input:configuration}",
+                "-j16"
+            ],
+            "group": {
+                "kind": "build",
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "focus": true,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "[CMake][Build][Linux]",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "Build_${input:platform}",
+                "--config",
+                "${input:configuration}",
+                "--target",
+                "WxWidgetsTemplateApp_console",
+                "-j16"
+            ],
+            "group": {
+                "kind": "build",
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "focus": true,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        }
+    ]
+}
