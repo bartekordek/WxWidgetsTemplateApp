@@ -2,7 +2,6 @@
 
 TemplateApp::TemplateApp()
 {
-
 }
 
 bool TemplateApp::OnInit()
@@ -16,8 +15,7 @@ bool TemplateApp::OnInit()
     return true;
 }
 
-TemplateFrame::TemplateFrame():
-    wxFrame( nullptr, wxID_ANY, "TempalteApp" )
+TemplateFrame::TemplateFrame(): wxFrame( nullptr, wxID_ANY, "TempalteApp" )
 {
     wxButton* button = new wxButton( this, wxID_ANY, "Click Me" );
 }
